@@ -5,7 +5,7 @@
   "main": "README.md",
   "scripts": {
     "lint": "standard",
-    "test": "standard && mocha",
+    "test": "mocha",
     "star": "./tooling/add_stars.sh README.md"
   },
   "repository": {

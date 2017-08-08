@@ -1,37 +1,41 @@
-// const fs = require('graceful-fs')
-// const rl = require('readline')
-// const file = '../README.md' // process.argv[2]
-// const lineReader = rl.createInterface({
-//   input: fs.createReadStream(file)
-// })
-// var output = ''
+function addStarsBadge (line) {
+  // Isolate []() links (We're only putting them in the square brackets)
+  // Check if there is already a GitHub stars badge in the []
+  // If the link is to a GitHub Repo in the (), add badge
 
-function addStars (input) {
-  return 1
-  // lineReader.on('line', function (line) {
-  //   // Program logic
-  //
-  //   // TODO Make sure that description matches `...) - desc`. format
-  //   // TODO Add periods on ends of descriptions
-  //   // TODO Automatically get descriptions (requires major refactor)
-  //
-  //   // TODO Use a RegExp in JS, or use a Markdown parsing engine?
-  //   // if it starts with a bullet followed by a "github.com" link
-  //   // sed  s/^\* \[\(.*\)\](https:\/\/github.com\/\([^ )]*\))\(.*\)/* [\1 \![GitHub stars]\(https:\/\/img.shields.io\/github\/stars\/\2.svg\)]\(https:\/\/github.com\/\2\)\3/' README.md
-  //
-  //   // TODO Add GitHub stars into Markdown link if it doesn't exist
-  //   // If line includes GitHub link
-  //   if(line.indexOf("github") !== -1) {
-  //     if(line.indexOf("GitHub stars") === -1) {
-  //       console.log(line)
-  //     }
-  //   }
-  //
-  //   output += line + '\n'
-  // })
+  var link = new RegExp('\[\(.*\)\](https:\/\/github.com\/\([^ )]*\))\(.*\)')
+
+  if (line.indexOf('https://github.com/') !== -1) {
+    if (line.indexOf('GitHub stars') === -1) {
+      console.log(line)
+      return line
+    }
+  }
+
+  return line
 }
 
-module.exports = addStars
+function editLines (input) {
+  // If Input is not an array, make it one
+  // If it is an array, go on the assumption it is split on newline
+  if (!Array.isArray(input)) {
+    input = input.split('\n')
+  }
 
-// Uncomment if not in development. This line works just fine.
-// lineReader.on('close', () => fs.writeFile(file, output))
+  return input.map((line) => {
+    // Add GitHub stars into Markdown link if it doesn't exist
+    // If line includes GitHub link
+    // TODO Make this regex more comprehensible using multiple JavaScript regexes
+    // sed  s/^\* \[\(.*\)\](https:\/\/github.com\/\([^ )]*\))\(.*\)/* [\1 \![GitHub stars]\(https:\/\/img.shields.io\/github\/stars\/\2.svg\)]\(https:\/\/github.com\/\2\)\3/' README.md
+    line = addStarsBadge(line)
+    return line
+  })
+
+  // Out of Scope of this module - rename module before publishing?
+  // TODO Create possible other module - list-cleaner?
+  // TODO Make sure that description matches `...) - desc`. format
+  // TODO Add periods on ends of descriptions
+  // TODO Automatically get descriptions (requires major refactor)
+}
+
+module.exports = {editLines, addStarsBadge}
