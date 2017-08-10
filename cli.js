@@ -3,6 +3,7 @@
 // const chalk = require('chalk')
 const meow = require('meow')
 const addStars = require('./')
+const Promise = require('bluebird')
 
 const cli = meow(`
   Usage
@@ -14,7 +15,8 @@ if (cli.input.length === 0) {
   process.exit(1)
 }
 
-addStars(cli.input[0]).then(data => {
+Promise.resolve(addStars(cli.input[0]))
+.then(data => {
   console.log(data)
   // for (const x of data) {
   //   if (cli.flags.forks && !x.fork) {
