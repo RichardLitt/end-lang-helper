@@ -2,7 +2,8 @@
   "name": "end-lang-helper",
   "version": "1.0.0",
   "description": "A helper for RichardLitt/endangered-languages.",
-  "main": "README.md",
+  "main": "index.js",
+  "bin": "cli.js",
   "scripts": {
     "lint": "standard",
     "test": "mocha"
