@@ -1,5 +1,7 @@
 # end-lang-helper
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/RichardLitt/end-lang-helper.svg)](https://greenkeeper.io/)
+
 > A helper for RichardLitt/endangered-languages
 
 This is a helper tool for [RichardLitt/endangered-languages](https://github.com/RichardLitt/endangered-languages).
