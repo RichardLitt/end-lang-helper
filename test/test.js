@@ -171,12 +171,6 @@ describe('addDesc', function () {
     done()
   })
 
-  it('should ignore ignored URLs', function (done) {
-    var string = 'Take a look at [the awesome lists collection](https://github.com/sindresorhus/awesome).'
-    var newString = 'Take a look at [the awesome lists collection](https://github.com/sindresorhus/awesome).'
-    assert.equal(string, lib.addDesc(string))
-  })
-
   it('should replace any existing spaces', function (done) {
     var string = 'This is a new line.'
     assert.equal(' - ' + string, lib.addDesc('    ' + string))
