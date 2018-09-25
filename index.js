@@ -9,14 +9,12 @@ function editLines (input, opts) {
   }
 
   return input.map((line) => {
-  
     if (opts.ignore && line.indexOf(opts.ignore) !== -1) {
       return line
     }
     line = lib.addStarsBadge(line, opts)
     return line
   }).join('\n')
-
 }
 
 module.exports = editLines

@@ -20,11 +20,11 @@ describe('parseInput', function () {
   it('should return an object if match', function () {
     var string = 'This is [good](https://github.com/good/good)'
     assert.deepEqual({
-      "description": "",
-      "link": "https://github.com/good/good",
-      "location": "good/good",
-      "startLine": "This is ",
-      "title": "good"
+      'description': '',
+      'link': 'https://github.com/good/good',
+      'location': 'good/good',
+      'startLine': 'This is ',
+      'title': 'good'
     }, lib.parseInput(string))
   })
 })
